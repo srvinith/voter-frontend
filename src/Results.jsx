@@ -34,7 +34,7 @@ function Results() {
         <h1 className="text-center my-5">Voting Results</h1>
         <div className="row">
           {members.map((member) => (
-            <div className="col-md-3" key={member._id}>
+            <div className="col-md-3 my-3" key={member._id}>
               <div className="cards">
                 <div className="card-img">
                   <img src='/images/user.png' className="card-img-top" alt="..." />
