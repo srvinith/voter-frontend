@@ -1,15 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 
 function Results() {
   const [members, setMembers] = useState([]);
   const [highestVoteMember, setHighestVoteMember] = useState(null);
 
-  useEffect(() => {
-    fetchMembers();
-  }, []);
-
-  const fetchMembers = async () => {
+  const fetchMembers = useCallback(async () => {
     try {
       const response = await axios.get('https://voter-server.onrender.com/api/members');
       const members = response.data;
@@ -18,7 +14,11 @@ function Results() {
     } catch (error) {
       console.error('Error fetching members:', error);
     }
-  };
+  }, []); // Empty dependency array since the function doesn't rely on external variables
+
+  useEffect(() => {
+    fetchMembers();
+  }, [fetchMembers]); // Include fetchMembers in dependency array
 
   const findHighestVoteMember = (members) => {
     if (members.length === 0) return;
