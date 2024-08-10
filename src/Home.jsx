@@ -13,7 +13,7 @@ function Home() {
 
   const fetchMembers = async () => {
     try {
-      const response = await axios.get('https://voter-server.onrender.com/api/members');
+      const response = await axios.get('https://voter-backend-1.onrender.com/api/members');
       setMembers(response.data);
     } catch (error) {
       console.error('Error fetching members:', error);
@@ -22,7 +22,7 @@ function Home() {
 
   const voteForMember = async (memberId) => {
     try {
-      await axios.post('https://voter-server.onrender.com/api/members/vote', { memberId });
+      await axios.post('https://voter-backend-1.onrender.com/api/members/vote', { memberId });
       fetchMembers(); // Refresh the list after voting
       const sound = new Audio('images/beep-01a.mp3');
       sound.play(); // Uncomment to play sound on vote

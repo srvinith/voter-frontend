@@ -7,7 +7,7 @@ function Results() {
 
   const fetchMembers = useCallback(async () => {
     try {
-      const response = await axios.get('https://voter-server.onrender.com/api/members');
+      const response = await axios.get('https://voter-backend-1.onrender.com/api/members');
       const members = response.data;
       setMembers(members);
       findHighestVoteMember(members);
